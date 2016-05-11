@@ -6,6 +6,8 @@ var template;
 
 $(document).on("ready", function(){
 
+    initMap();
+    
     $quakesList = $.ajax({
         method: "GET",
         url: weekly_quakes_endpoint
@@ -25,3 +27,20 @@ $(document).on("ready", function(){
         console.log("Error", response);
     })
 });
+
+
+    // from Google Maps
+    function initMap() {
+        var pos = {lat: 37.78, lng: -122.44};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pos,
+          zoom: 12
+        });
+
+        var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: "San Francisco"
+        })
+      }
